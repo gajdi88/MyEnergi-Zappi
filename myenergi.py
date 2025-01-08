@@ -60,20 +60,25 @@ class Myenergi:
     def display(self):
         statuses = self.statuses
         for idx, status in enumerate(statuses):
-            print(f"Status {idx + 1}:")
+            pst = status.get("pst", "N/A")
+            sta = status.get("sta", "N/A")
+            summary = ""
+
+            if pst == "A":
+                summary = "EV Disconnected"
+            elif pst == "C2":
+                summary = "Charging"
+            elif pst in ["B2", "C1"] and sta != 5:  # EV ready or waiting to charge, but not complete
+                summary = "EV Ready to Charge"
+            elif sta == 5:
+                summary = "Charging Complete"
+            elif pst == "F":
+                summary = "Fault"
+            else:
+                summary = "Unknown Status"
+            print(f"Status {idx + 1}: {summary}")
             print(f"  Generated Watts (gen): {status.get('gen', 'N/A')}")
             print(f"  Watts from Grid (grd): {status.get('grd', 'N/A')}")
-            print(f"  Power State (pst): {status.get('pst', 'N/A')} "
-                  f"({'EV Disconnected' if status.get('pst') == 'A' else ''}"
-                  f"{'EV Connected' if status.get('pst') == 'B1' else ''}"
-                  f"{'Waiting for EV' if status.get('pst') == 'B2' else ''}"
-                  f"{'EV Ready to Charge' if status.get('pst') == 'C1' else ''}"
-                  f"{'Charging' if status.get('pst') == 'C2' else ''}"
-                  f"{'Fault' if status.get('pst') == 'F' else ''})")
-            print(f"  Status (sta): {status.get('sta', 'N/A')} "
-                  f"({'Paused' if status.get('sta') == 1 else ''}"
-                  f"{'Diverting/Charging' if status.get('sta') == 3 else ''}"
-                  f"{'Complete' if status.get('sta') == 5 else ''})")
             total_charge = status.get('gen', 0) + status.get('grd', 0)
             print(f"  Total Charge (gen + grd): {total_charge}")
             print("-" * 40)
