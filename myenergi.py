@@ -57,29 +57,38 @@ class Myenergi:
             # decipher response.content from JSON
         return statuses
 
-    def display(self):
-        statuses = self.statuses
-        for idx, status in enumerate(statuses):
+    def summarize_statuses(self):
+        summarized_statuses = []
+        for idx, status in enumerate(self.statuses):
             pst = status.get("pst", "N/A")
             sta = status.get("sta", "N/A")
             summary = ""
 
             if pst == "A":
                 summary = "EV Disconnected"
+                color = "red"
             elif pst == "C2":
                 summary = "Charging"
-            elif pst in ["B2", "C1"] and sta != 5:  # EV ready or waiting to charge, but not complete
+                color = "green"
+            elif pst in ["B2", "C1"] and sta != 5:
                 summary = "EV Ready to Charge"
+                color = "yellow"
             elif sta == 5:
                 summary = "Charging Complete"
+                color = "blue"
             elif pst == "F":
                 summary = "Fault"
+                color = "orange"
             else:
                 summary = "Unknown Status"
-            print(f"Status {idx + 1}: {summary}")
-            print(f"  Generated Watts (gen): {status.get('gen', 'N/A')}")
-            print(f"  Watts from Grid (grd): {status.get('grd', 'N/A')}")
-            total_charge = status.get('gen', 0) + status.get('grd', 0)
-            print(f"  Total Charge (gen + grd): {total_charge}")
-            print("-" * 40)
+                color = "gray"
 
+            total_charge = status.get('gen', 0) + status.get('grd', 0)
+            summarized_statuses.append({
+                "charger": f"Charger {idx + 1}",
+                "status": summary,
+                "color": color,
+                "total_charge": total_charge,
+                "details": status
+            })
+        return summarized_statuses

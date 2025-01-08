@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ledger and CGT Calculator</title>
+    <title>EV Charger Status</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
-    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <meta http-equiv="refresh" content="60">
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
 </head>
 <body>
@@ -21,6 +20,27 @@
             </ul>
         </div>
     </nav>
-    <div id="table"></div>
+    <h1>EV Charger Status</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for status in statuses %}
+                    <th>{{ status.charger }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for status in statuses %}
+                    <td style="background-color: {{ status.color }}; color: white;">{{ status.status }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for status in statuses %}
+                    <td>Total Charge: {{ status.total_charge }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
     </body>
 </html>

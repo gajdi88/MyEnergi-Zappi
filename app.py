@@ -15,8 +15,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     mysession = Myenergi()
-
-    return render_template('index.html')
+    statuses = mysession.summarize_statuses()
+    return render_template('index.html', statuses=statuses)
 
 
 
