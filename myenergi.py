@@ -66,7 +66,7 @@ class Myenergi:
 
             if pst == "A":
                 summary = "EV Disconnected"
-                color = "red"
+                color = "gray"
             elif pst == "C2":
                 summary = "Charging"
                 color = "green"
@@ -78,12 +78,13 @@ class Myenergi:
                 color = "blue"
             elif pst == "F":
                 summary = "Fault"
-                color = "orange"
+                color = "red"
             else:
                 summary = "Unknown Status"
-                color = "gray"
+                color = "orange"
 
-            total_charge = status.get('gen', 0) + status.get('grd', 0)
+            total_charge = (status.get('gen', 0) + status.get('grd', 0)) / 1000
+            total_charge = round(total_charge, 1)  # Round to 1 decimal place
             summarized_statuses.append({
                 "charger": f"Charger {idx + 1}",
                 "status": summary,

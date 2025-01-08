@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EV Charger Status</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta http-equiv="refresh" content="60">
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
@@ -14,13 +28,14 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="btn btn-primary" href="/clear_session">Clear session</a>
+                    <a class="btn btn-primary" href="/">Refresh session</a>
                     <!-- <a href="/calculate_cgt" class="btn btn-primary mt-3">Calculate CGT</a>-->
                 </li>
             </ul>
         </div>
     </nav>
-    <h1>EV Charger Status</h1>
+    <br>
+    <br>
     <table>
         <thead>
             <tr>
@@ -37,7 +52,7 @@
             </tr>
             <tr>
                 {% for status in statuses %}
-                    <td>Total Charge: {{ status.total_charge }}</td>
+                    <td>Charge rate (kW): {{ status.total_charge }}</td>
                 {% endfor %}
             </tr>
         </tbody>
