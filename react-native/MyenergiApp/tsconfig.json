@@ -1,6 +1,10 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "baseUrl": ".", // Base URL for resolving modules
+    "paths": {
+      "@env": ["env.d.ts"] // Map @env to your custom declaration
+    }
   }
 }

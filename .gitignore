@@ -6,6 +6,7 @@ __pycache__/
 .idea
 *.csv
 apikeys.csv
+.env
 
 # C extensions
 *.so
