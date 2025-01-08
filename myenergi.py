@@ -56,3 +56,25 @@ class Myenergi:
             statuses.append(status)
             # decipher response.content from JSON
         return statuses
+
+    def display(self):
+        statuses = self.statuses
+        for idx, status in enumerate(statuses):
+            print(f"Status {idx + 1}:")
+            print(f"  Generated Watts (gen): {status.get('gen', 'N/A')}")
+            print(f"  Watts from Grid (grd): {status.get('grd', 'N/A')}")
+            print(f"  Power State (pst): {status.get('pst', 'N/A')} "
+                  f"({'EV Disconnected' if status.get('pst') == 'A' else ''}"
+                  f"{'EV Connected' if status.get('pst') == 'B1' else ''}"
+                  f"{'Waiting for EV' if status.get('pst') == 'B2' else ''}"
+                  f"{'EV Ready to Charge' if status.get('pst') == 'C1' else ''}"
+                  f"{'Charging' if status.get('pst') == 'C2' else ''}"
+                  f"{'Fault' if status.get('pst') == 'F' else ''})")
+            print(f"  Status (sta): {status.get('sta', 'N/A')} "
+                  f"({'Paused' if status.get('sta') == 1 else ''}"
+                  f"{'Diverting/Charging' if status.get('sta') == 3 else ''}"
+                  f"{'Complete' if status.get('sta') == 5 else ''})")
+            total_charge = status.get('gen', 0) + status.get('grd', 0)
+            print(f"  Total Charge (gen + grd): {total_charge}")
+            print("-" * 40)
+

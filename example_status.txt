@@ -1,0 +1,58 @@
+Status 1:
+  Generated Watts (gen): 0
+  Watts from Grid (grd): 4
+  Lock Status (lck): 5 (4 bits: 1st digit - ?, 2nd digit - 1=Unlocked, 0=Locked)
+  Power State (pst): A (EV Disconnected)
+  Status (sta): 4 ()
+  Total Charge (gen + grd): 4
+----------------------------------------
+Status 2:
+  Generated Watts (gen): 0
+  Watts from Grid (grd): 3782
+  Lock Status (lck): 20 (4 bits: 1st digit - ?, 2nd digit - 1=Unlocked, 0=Locked)
+  Power State (pst): C2 (Charging)
+  Status (sta): 4 ()
+  Total Charge (gen + grd): 3782
+----------------------------------------
+Status 3:
+  Generated Watts (gen): 0
+  Watts from Grid (grd): 4
+  Lock Status (lck): 5 (4 bits: 1st digit - ?, 2nd digit - 1=Unlocked, 0=Locked)
+  Power State (pst): A (EV Disconnected)
+  Status (sta): 4 ()
+  Total Charge (gen + grd): 4
+----------------------------------------
+Status 4:
+  Generated Watts (gen): 0
+  Watts from Grid (grd): 11069
+  Lock Status (lck): 20 (4 bits: 1st digit - ?, 2nd digit - 1=Unlocked, 0=Locked)
+  Power State (pst): C2 (Charging)
+  Status (sta): 4 ()
+  Total Charge (gen + grd): 11069
+----------------------------------------
+Status 5:
+  Generated Watts (gen): 0
+  Watts from Grid (grd): 4
+  Lock Status (lck): 5 (4 bits: 1st digit - ?, 2nd digit - 1=Unlocked, 0=Locked)
+  Power State (pst): A (EV Disconnected)
+  Status (sta): 4 ()
+  Total Charge (gen + grd): 4
+----------------------------------------
+Status 6:
+  Generated Watts (gen): 0
+  Watts from Grid (grd): 4
+  Lock Status (lck): 20 (4 bits: 1st digit - ?, 2nd digit - 1=Unlocked, 0=Locked)
+  Power State (pst): B2 (Waiting for EV)
+  Status (sta): 5 (Complete)
+  Total Charge (gen + grd): 4
+----------------------------------------
+
+
+
+
+
+
+
+
+
+
