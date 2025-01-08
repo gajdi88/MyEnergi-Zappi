@@ -1,3 +1,14 @@
+
+		// total charge = generated watts + watts from grid
+		"gen": 2143,		//Generated Watts
+		"grd": 1017,		//Watts from grid?
+		"lck": 10,		//Lock Status (4 bits : 1st digit - ? : 2nd digit - 1 unlocked, 0 locked)
+		"pst": "A",		//Status A=EV Disconnected, B1=EV Connected, B2=Waiting for EV, C1=EV Ready to Charge, C2= Charging, F= Fault
+		"sta": 3,			//Status  1=Paused 3=Diverting/Charging 5=Complete
+
+
+
+
 Status 1:
   Generated Watts (gen): 0
   Watts from Grid (grd): 4
